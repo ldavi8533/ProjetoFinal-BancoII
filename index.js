@@ -24,6 +24,8 @@ const pessoaController = require('./controllers/PessoaController');
 
 app.get('/', pessoaController.getPage);
 
+app.get('/pessoas', pessoaController.getPessoas);
+
 app.listen(process.env.API_PORT, ()=>{
     console.log(`API rodando na porta ${process.env.API_PORT}`);
 });
