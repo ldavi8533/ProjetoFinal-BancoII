@@ -18,7 +18,7 @@ const addPessoa = async (request, response) =>{
 
   const pessoa = new Pessoa(request.body);
   pessoa.save().then(()=>{
-      response.status(200).redirect('/list')
+      response.status(200).send('Salvo com sucesso')
   }).catch(err=>{
       response.status(400).send("Erro ao salvar")
   });

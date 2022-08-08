@@ -7,7 +7,7 @@ function salvar(){
         comentario: document.getElementById('comentario').value,
     };
 
-    fetch("http://localhost:3000/pessoas",{
+    fetch("http://localhost:3001/pessoas",{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
