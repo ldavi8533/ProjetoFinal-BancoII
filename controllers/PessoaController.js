@@ -24,4 +24,10 @@ const addPessoa = async (request, response) =>{
   });
 }
 
-  module.exports = {getPage, getPessoas, addPessoa};
+const addList = (request, response) =>{
+  Pessoa.find().then(function(pessoas){
+  response.render('list', {pessoas: pessoas})
+  })
+}
+
+  module.exports = {getPage, getPessoas, addPessoa, addList};

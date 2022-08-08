@@ -28,6 +28,8 @@ app.get('/pessoas', pessoaController.getPessoas);
 
 app.post('/pessoas', pessoaController.addPessoa);
 
+app.post('/list', pessoaController.addList);
+
 app.listen(process.env.API_PORT, ()=>{
     console.log(`API rodando na porta ${process.env.API_PORT}`);
 });
