@@ -26,6 +26,8 @@ app.get('/', pessoaController.getPage);
 
 app.get('/pessoas', pessoaController.getPessoas);
 
+app.post('/pessoas', pessoaController.addPessoa);
+
 app.listen(process.env.API_PORT, ()=>{
     console.log(`API rodando na porta ${process.env.API_PORT}`);
 });

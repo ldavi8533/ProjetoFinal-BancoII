@@ -14,4 +14,14 @@ const getPessoas = async (request, response)=>{
 
 }
 
-  module.exports = {getPage, getPessoas};
+const addPessoa = async (request, response) =>{
+
+  const pessoa = new Pessoa(request.body);
+  pessoa.save().then(()=>{
+      response.status(200).redirect('/list')
+  }).catch(err=>{
+      response.status(400).send("Erro ao salvar")
+  });
+}
+
+  module.exports = {getPage, getPessoas, addPessoa};
