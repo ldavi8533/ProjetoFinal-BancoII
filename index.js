@@ -1,0 +1,29 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const handlebars = require('express-handlebars');
+
+app.use(express.json());
+
+app.engine('handlebars', handlebars.engine({
+    defaultLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
+}))
+
+app.set('view engine', 'handlebars')
+
+app.use(express.static('assets/'))
+
+app.use(express.urlencoded({extended: false}))
+
+const pessoaController = require('./controllers/PessoaController');
+
+app.get('/', pessoaController.getPage);
+
+app.listen(process.env.API_PORT, ()=>{
+    console.log(`API rodando na porta ${process.env.API_PORT}`);
+});
