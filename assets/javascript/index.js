@@ -4,9 +4,14 @@ function salvar(){
         nome: document.getElementById('nome').value,
         email: document.getElementById('email').value,
         filme: document.getElementById('filme').value,
-        comentario: document.getElementById('comentario').value,
+        comentario: document.getElementById('comentario').value
     };
 
+    if(obj.nome == "" || obj.email == "" || obj.filme == ""  || obj.comentario == ""){
+      alert("Todos os campos devem ser preenchidos")
+    }
+
+    else{
     fetch("http://localhost:3001/pessoas",{
       method: 'POST',
       headers: {
@@ -15,6 +20,6 @@ function salvar(){
       },
       body: JSON.stringify(obj)
     }).then(response =>{alert('Salvo com sucesso')})
-    .catch(error => alert('Falha ao salvar!'));    
-
+    .catch(error => alert('Falha ao salvar!'));
+  }
 }
