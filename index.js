@@ -30,6 +30,8 @@ app.post('/pessoas', pessoaController.addPessoa);
 
 app.post('/list', pessoaController.addList);
 
+app.get('/delete/:email', pessoaController.deletePessoa);
+
 app.listen(process.env.API_PORT, ()=>{
     console.log(`API rodando na porta ${process.env.API_PORT}`);
 });

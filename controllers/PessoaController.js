@@ -1,7 +1,8 @@
-const { response } = require('express');
+const { response, request } = require('express');
 const res = require('express/lib/response');
 const { replaceOne } = require('../models/pessoa');
 const Pessoa = require('../models/pessoa');
+const objectId = require('mongodb').ObjectID;
 
 const getPage = async function (request, response) {
     response.render('../views/index')
@@ -30,4 +31,16 @@ const addList = (request, response) =>{
   })
 }
 
-  module.exports = {getPage, getPessoas, addPessoa, addList};
+const deletePessoa = async (request, response)=>{
+
+  const result = await Pessoa.deleteOne({email: request.params.email});
+
+  if(result.deletedCount){
+      response.status(200).render('confirmdelete');
+  }
+  else{
+      response.status(400).send('Usuário não encontrado')
+  }
+}
+
+  module.exports = {getPage, getPessoas, addPessoa, addList, deletePessoa};
