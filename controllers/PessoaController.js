@@ -43,4 +43,23 @@ const deletePessoa = async (request, response)=>{
   }
 }
 
-  module.exports = {getPage, getPessoas, addPessoa, addList, deletePessoa};
+const atualizarPessoa = async(request, response)=>{
+  Pessoa.findOne({email: request.params.email}).then((pessoas) =>{
+    response.render('edit',{pessoas: pessoas})
+  })
+}
+
+const confirmEdit = async(request, response)=>{
+  Pessoa.findOne({email: request.body.email}).then((pessoas)=>{
+
+    pessoas.nome = request.body.nome
+    pessoas.filme = request.body.filme
+    pessoas.comentario = request.body.comentario
+    pessoas.save().then(()=>{
+      response.render('confirmedit')
+    })
+
+  })
+}
+
+  module.exports = {getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit};
