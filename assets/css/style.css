@@ -1,0 +1,48 @@
+body{
+    background-color: #191970;
+    box-shadow: black;
+}
+form {
+    margin: 0 auto;
+    margin-top: 50px ;
+    width: 400px;
+    padding: 1em;
+    box-shadow: 5px 5px 5px black;   
+    border-radius: 1em;
+    background-color: white;
+}
+.mb-3{
+    padding-top: 10px;
+}
+label{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    display: flex;
+    font-size: 20px;
+    margin: auto;
+    text-align:center;
+    width:300px;
+    height: 25px;
+
+}
+#salvar{
+    position: absolute;
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+    margin-top: 25px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#list.list{
+    margin: 0 auto;
+    margin-top: 50px ;
+    width: 400px;
+    padding: 1em;
+    box-shadow: 5px 5px 5px black;   
+    border-radius: 1em;
+    background-color: white;
+}
