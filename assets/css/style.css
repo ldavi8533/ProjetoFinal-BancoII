@@ -8,7 +8,13 @@
 }
 
 body{
-    overflow: hidden;
+    
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #A7C7E7, #CCCCFF);
 }
 
 section{
