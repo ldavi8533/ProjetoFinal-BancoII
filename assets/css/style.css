@@ -13,12 +13,14 @@ body{
 
 section{
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+    background: linear-gradient(to bottom, #A7C7E7, #CCCCFF);
 }
+
+
 
 section .color{
     position: absolute;
@@ -71,6 +73,7 @@ section .color:nth-child(3){
 }
 
 .form{
+    z-index: 1;
     position: relative;
     width: 100%;
     height: 100%;
@@ -113,12 +116,12 @@ h2::before{
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 16px;
     letter-spacing: 1px;
-    color: #fff;
+    color: #666;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0, 0.02);
  }
 
  .teste::placeholder{
-    color: #fff;
+    color: #666;
  }
 
 .teste1{
@@ -127,6 +130,7 @@ h2::before{
     cursor: pointer;
     font-weight: 600;
 }
+
 /* body{
     background-color: #191970;
     box-shadow: black;

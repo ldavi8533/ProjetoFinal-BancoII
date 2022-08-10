@@ -1,10 +1,16 @@
 {{#each pessoas}}
-    <div id="list" class="list">
+<section>
+
+
+    <div id="list" class="container">
         <p>Nome: {{nome}}</p>
         <p>Email: {{email}}</p>
         <p>Filme: {{filme}}</p>
         <p>Comentário: {{comentario}}</p>
-        <a href="delete/{{email}}"><button>Deletar</button></a>
-        <a href="/edit/{{email}}"><button>Editar</button></a>
+        <br />
+        <a href="delete/{{email}}"><button class="teste teste1">Deletar</button></a>
+        <br />
+        <a href="/edit/{{email}}"><button class="teste teste1">Editar</button></a>
    </div>
+</section>
 {{/each}}
