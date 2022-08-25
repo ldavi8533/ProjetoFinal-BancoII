@@ -8,10 +8,6 @@ const getPage = async function (request, response) {
     response.render('../views/index')
 }
 
-const getList = async function (request, response){
-    response.render('../views/list')
-}
-
 const getPessoas = async (request, response)=>{
 
   const pessoas = await Pessoa.find({}, {_id: false, __v: false});
@@ -66,4 +62,4 @@ const confirmEdit = async(request, response)=>{
   })
 }
 
-  module.exports = {getPage, getList, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit};
+  module.exports = {getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit};
