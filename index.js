@@ -24,6 +24,8 @@ const pessoaController = require('./controllers/PessoaController');
 
 app.get('/', pessoaController.getPage);
 
+app.get('/list', pessoaController.getList);
+
 app.get('/pessoas', pessoaController.getPessoas);
 
 app.post('/pessoas', pessoaController.addPessoa);
