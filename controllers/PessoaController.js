@@ -3,6 +3,30 @@ const res = require('express/lib/response');
 const { replaceOne } = require('../models/pessoa');
 const Pessoa = require('../models/pessoa');
 const objectId = require('mongodb').ObjectID;
+const client = require('../database/redis');
+
+const cachePessoa = async (request, response) =>{
+  const email = request.params.email;
+
+  const result = await client.get(email);
+
+  if(result!=null){
+      const pessoa = JSON.parse(result);
+      response.status(200).send(pessoa);
+  }else{
+      const pessoa = await Pessoa.find({where:{
+          email:email
+      }});
+  
+      if(pessoa == null){
+          response.status(200).send('Usuário não encontrado');
+      }else{
+          await client.set(email, JSON.stringify(pessoa),{EX: 3600});
+          response.status(200).send(pessoa);
+      }
+  }
+  
+}
 
 const getPage = async function (request, response) {
     response.render('../views/index')
@@ -62,4 +86,4 @@ const confirmEdit = async(request, response)=>{
   })
 }
 
-  module.exports = {getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit};
+  module.exports = {cachePessoa, getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit};

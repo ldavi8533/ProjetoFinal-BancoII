@@ -22,8 +22,9 @@ app.use(express.urlencoded({extended: false}))
 
 const pessoaController = require('./controllers/PessoaController');
 
-app.get('/', pessoaController.getPage);
+app.get('/pessoas/:email', pessoaController.cachePessoa);
 
+app.get('/', pessoaController.getPage);
 
 app.get('/pessoas', pessoaController.getPessoas);
 
