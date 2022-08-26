@@ -31,9 +31,12 @@ const neo = async() => {
   session.close();
 
   //console.log(result.records.length);
+  const node = [];
+
   result.records.forEach(res => {
     console.log(res.get(0).propreties)
-  })
+    node.push({nome: res.get(0).propreties.nome, idade: res.get(0).propreties.idade.low})
+})
 }
-
+console.log(node)
 neo();
