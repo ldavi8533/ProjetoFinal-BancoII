@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const neo4j = require('neo4j-driver');
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
@@ -12,3 +13,27 @@ module.exports = mongoose;
 
 // neo4j
 
+
+const driver = new neo4j.driver('neo4j://localhost:7687', neo4j.auth.basic('neo4j', 'neo4j1'));
+
+const session = driver.session({
+  database: 'neo4j',
+});
+
+
+
+console.log('Conectado ao banco neo4j');
+
+const neo = async() => {
+  const result = await session.run("MATCH (n) return n", {});
+
+
+  session.close();
+
+  //console.log(result.records.length);
+  result.records.forEach(res => {
+    console.log(res.get(0).propreties)
+  })
+}
+
+neo();
