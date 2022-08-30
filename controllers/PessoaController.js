@@ -4,7 +4,7 @@ const { replaceOne } = require('../models/pessoa');
 const Pessoa = require('../models/pessoa');
 const objectId = require('mongodb').ObjectID;
 const client = require('../database/redis');
-const node4j = require('./database/neo4j')
+const driver = require('../database/neo4j')
 
 const cachePessoa = async (request, response) =>{
   const email = request.params.email;
@@ -87,4 +87,21 @@ const confirmEdit = async(request, response)=>{
   })
 }
 
-  module.exports = {cachePessoa, getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit};
+
+const createUser = async function(email){
+  let session = driver.session();
+  let user = "No User Was  Created"
+  try {
+      user = await session.run("CREATE (n:user {nome: $id}) RETURN n", {
+          email: email        
+      });
+  } 
+  catch (err){
+      console.log(err)
+      return user;
+  }
+  return user.records[0]._field[0].properties.name;
+}
+
+
+  module.exports = {cachePessoa, getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit, createUser};

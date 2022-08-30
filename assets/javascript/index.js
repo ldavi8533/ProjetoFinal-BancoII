@@ -12,7 +12,7 @@ function salvar(){
     }
 
     else{
-    fetch("http://localhost:3001/pessoas",{
+    fetch("http://localhost:3000/pessoas",{
       method: 'POST',
       headers: {
         'Accept': 'application/json',

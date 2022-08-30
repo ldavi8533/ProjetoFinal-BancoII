@@ -30,7 +30,7 @@ app.get('/pessoas', pessoaController.getPessoas);
 
 app.post('/pessoas', pessoaController.addPessoa);
 
-app.post('/list', pessoaController.addList);
+app.post('/list', pessoaController.addList, pessoaController.createUser);
 
 app.get('/delete/:email', pessoaController.deletePessoa);
 
