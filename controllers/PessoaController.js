@@ -4,6 +4,7 @@ const { replaceOne } = require('../models/pessoa');
 const Pessoa = require('../models/pessoa');
 const objectId = require('mongodb').ObjectID;
 const client = require('../database/redis');
+const node4j = require('./database/neo4j')
 
 const cachePessoa = async (request, response) =>{
   const email = request.params.email;
