@@ -87,12 +87,11 @@ const confirmEdit = async(request, response)=>{
   })
 }
 
-
 const createUser = async function(email){
   let session = driver.session();
   let user = "No User Was  Created"
   try {
-      user = await session.run("CREATE (n:user {nome: $id}) RETURN n", {
+      user = await session.run("CREATE (n:user {email: $id}) RETURN n", {
           email: email        
       });
   } 
@@ -100,7 +99,7 @@ const createUser = async function(email){
       console.log(err)
       return user;
   }
-  return user.records[0]._field[0].properties.name;
+  return user.records[0]._fields[0].properties.email;
 }
 
 
