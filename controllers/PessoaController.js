@@ -7,16 +7,13 @@ const client = require('../database/redis');
 const driver = require('../database/neo4j')
 
 const cachePessoa = async (request, response) =>{
-
   const email = request.params.email;
+
   const result = await client.get(email);
 
-  if(result != null){
+  if(result!=null){
       const pessoa = JSON.parse(result);
-      response.status(200)
-      await client.get(pessoa)
-      response.send(pessoa)
-      
+      response.status(200).send(pessoa);
   }else{
       const pessoa = await Pessoa.findOne({where:{
           email:email
@@ -30,7 +27,7 @@ const cachePessoa = async (request, response) =>{
       }
   }
   
-}
+};
 
 const getPage = async function (request, response) {
     response.render('../views/index')
