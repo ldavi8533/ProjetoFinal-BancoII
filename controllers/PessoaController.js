@@ -45,6 +45,8 @@ const addPessoa = async (request, response) =>{
   const pessoa = new Pessoa(request.body);
   pessoa.save().then(()=>{
       response.status(200).send('Salvo com sucesso')
+      createUser(request.body.nome)
+      createFilme(request.body.filme)
   }).catch(err=>{
       response.status(400).send("Erro ao salvar")
   });
@@ -87,20 +89,35 @@ const confirmEdit = async(request, response)=>{
   })
 }
 
-const createUser = async function(email){
+const createUser = async function(nome){
   let session = driver.session();
   let user = "No User Was  Created"
   try {
-      user = await session.run("CREATE (n:user {email: $id}) RETURN n", {
-          email: email        
+      user = await session.run("CREATE (n:user {nome: $nome}) RETURN n", {
+          nome: nome        
       });
   } 
   catch (err){
       console.log(err)
       return user;
   }
-  return user.records[0]._fields[0].properties.email;
+  return user.records[0]._fields[0].properties.nome;
 }
 
+const createFilme = async function(filme){
+  let session = driver.session();
+  let movie = "No User Was  Created"
+  try {
+      movie = await session.run("CREATE (n:movie {filme: $filme}) RETURN n", {
+          filme: filme        
+      });
+ 
+  } 
+  catch (err){
+      console.log(err)
+      return movie;
+  }
+  return movie.records[0]._fields[0].properties.filme;
+}
 
-  module.exports = {cachePessoa, getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit, createUser};
+  module.exports = {cachePessoa, getPage, getPessoas, addPessoa, addList, deletePessoa, atualizarPessoa, confirmEdit, createUser, createFilme};
