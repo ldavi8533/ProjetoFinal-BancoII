@@ -151,6 +151,10 @@ button {
     font-size: 16px;
     letter-spacing: 1px;
 }
+ 
+.coment{
+ text-align: center;
+}
 
 /* body{
     background-color: #191970;
